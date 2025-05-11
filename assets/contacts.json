@@ -1,0 +1,208 @@
+[
+    {
+      "name": "John Doe",
+      "message": "hello there ! how are you ?",
+      "time": "2024-12-15T10:45:00",
+      "unread": 3,
+      "status": "online",
+      "image": "/images/20220609_171629_transcpr.jpg"
+    },
+    {
+      "name": "Jane Smith",
+      "message": "hi",
+      "time": "2025-04-15T09:30:00",
+      "unread": 1,
+      "status": "offline",
+      "image": "/images/20230705_133124.jpg"
+    },
+    {
+      "name": "Bob Johnson",
+      "message": "hey",
+      "time": "2024-12-15T08:15:00",
+      "unread": 0,
+      "status": "online",
+      "image": "/images/AMyImage2.jpg"
+    },
+    {
+      "name": "Alice Brown",
+      "message": "Hello",
+      "time": "2024-12-15T07:45:00",
+      "unread": 2,
+      "status": "offline",
+      "image": "/images/bg.jpeg"
+    },
+    {
+      "name": "Charlie Davis",
+      "message": "Greetings",
+      "time": "2024-12-15T06:15:00",
+      "unread": 5,
+      "status": "online",
+      "image": "/images/bg.jpeg"
+    },
+    {
+      "name": "David Lee",
+      "message": "Hi",
+      "time": "2024-12-15T11:00:00",
+      "unread": 0,
+      "status": "online",
+      "image": "/images/bg.jpeg"
+    },
+    {
+      "name": "Emily Carter",
+      "message": "Checking in",
+      "time": "2024-12-15T12:00:00",
+      "unread": 1,
+      "status": "offline",
+      "image": "/images/bg.jpeg"
+    },
+    {
+      "name": "Frank Green",
+      "message": "Hey there",
+      "time": "2024-12-15T13:30:00",
+      "unread": 3,
+      "status": "online",
+      "image": "/images/bg.jpeg"
+    },
+  {
+      "name": "Grace Perez",
+      "message": "How are you?",
+      "time": "2024-12-15T05:00:00",
+      "unread": 0,
+      "status": "offline",
+      "image": "/images/bg.jpeg"
+    },
+  {
+      "name": "Henry Wilson",
+      "message": "Just checking",
+      "time": "2024-12-15T14:15:00",
+      "unread": 1,
+      "status": "online",
+      "image": "/images/book-3088775_1280.jpg"
+  
+  },
+   {
+      "name": "Isabella Diaz",
+      "message": "Greetings",
+      "time": "2024-12-15T15:45:00",
+      "unread": 4,
+      "status": "offline",
+      "image": "/images/Capture d'écran 2024-12-24 125401.png"
+    },
+   {
+      "name": "Jack Rodriguez",
+      "message": "Hello there",
+      "time": "2024-12-15T16:10:00",
+      "unread": 0,
+      "status": "online",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+   {
+      "name": "Karen Smith",
+      "message": "How's it going?",
+      "time": "2024-12-15T10:00:00",
+      "unread": 2,
+      "status": "offline",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+  
+      {
+      "name": "Laura Brown",
+      "message": "Hi",
+      "time": "2024-12-15T04:00:00",
+      "unread": 5,
+      "status": "online",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+    {
+      "name": "Michael Davis",
+      "message": "Hey",
+      "time": "2024-12-15T17:20:00",
+      "unread": 1,
+      "status": "offline",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+      },
+  
+   {
+    "name": "Olivia Johnson",
+    "message": "Hello",
+    "time": "2024-12-15T03:00:00",
+    "unread": 0,
+    "status": "online",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+  
+  {
+    "name": "Peter Garcia",
+    "message": "How are you doing?",
+    "time": "2024-12-15T18:30:00",
+    "unread": 2,
+    "status": "offline",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  },
+  {
+      "name": "Sophia Wilson",
+      "message": "Hey",
+      "time": "2024-12-15T19:00:00",
+      "unread": 3,
+      "status": "online",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  },
+   {
+    "name": "Victoria Rodriguez",
+    "message": "Hi",
+    "time": "2024-12-15T12:30:00",
+    "unread": 1,
+    "status": "online",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+    {
+    "name": "William Perez",
+    "message": "Greetings",
+    "time": "2024-12-15T11:15:00",
+    "unread": 0,
+    "status": "offline",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  },
+   {
+    "name": "Ashley Lee",
+    "message": "Checking in",
+    "time": "2024-12-15T20:00:00",
+    "unread": 1,
+    "status": "online",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  },
+   {
+    "name": "Benjamin Carter",
+    "message": "Hello",
+    "time": "2024-12-15T09:00:00",
+    "unread": 2,
+    "status": "offline",
+    "image": "/images/Capture d'écran 2024-12-27 105308.png"
+    },
+  {
+      "name": "Camila Diaz",
+      "message": "How are you?",
+      "time": "2024-12-15T10:15:00",
+      "unread": 4,
+      "status": "online",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  
+  },
+  {
+      "name": "Daniel Rodriguez",
+      "message": "Hi there",
+      "time": "2024-12-15T08:45:00",
+      "unread": 0,
+      "status": "offline",
+      "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  
+  },
+  {
+  "name": "Emily Wilson",
+  "message": "Checking in",
+  "time": "2024-12-15T21:00:00",
+  "unread": 1,
+  "status": "online",
+  "image": "/images/Capture d'écran 2024-12-27 105308.png"
+  }
+  ]
