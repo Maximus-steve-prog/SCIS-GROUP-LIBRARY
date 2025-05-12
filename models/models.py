@@ -1,13 +1,17 @@
-import datetime
+from datetime import datetime
 from db.db import db
+from flask_bcrypt import Bcrypt #type: ignore
+
+bcrypt = Bcrypt()
 
 
-class Emplyee(db.Model):
+
+class Employee(db.Model):
     __tablename__ = 'employees'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     fullName = db.Column(db.String(150), nullable=False)
-    Employee_Type = db.Column(db.String(50), nullable=False)
-    password = db.Column(db.String(255), nullable=False)
+    employee_Type = db.Column(db.String(50), nullable=False)
+    password_hash  = db.Column(db.String(255), nullable=False)
     self_Description = db.Column(db.String(255), nullable=False)
     photo_path = db.Column(db.String(255), nullable=False)
     created_At = db.Column(db.DateTime, default=datetime.utcnow)
@@ -15,6 +19,12 @@ class Emplyee(db.Model):
     validated=db.Column(db.Boolean, default=False)
     last_LoginAt = db.Column(db.DateTime)  
     
+    
+    def set_password(self, password):
+        self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    def check_password(self, password):
+        return bcrypt.check_password_hash(self.password_hash, password)
     
     def to_dict(self):
         return {

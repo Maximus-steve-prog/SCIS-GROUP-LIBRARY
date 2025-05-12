@@ -314,10 +314,13 @@ jQuery(function(){
         },
         submitHandler: function(form) {
           const formData = new FormData(this);
-          console.log(formData);
-
-          // hidePopup(jQuery('#registerPopup'));
-          // form.reset();
+          axios.post('/register', formData)
+            .then(function(response) {
+              console.log(response.data);
+            })
+            .catch(function(error) {
+              console.log(error.response.data);
+            });
         }
       });
 
