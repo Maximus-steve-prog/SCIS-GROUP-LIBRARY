@@ -31,30 +31,36 @@ def get_employees():
 def register():
     if request.method == 'GET':
         return render_template('index.html')
+    
     data = request.form
+    fullName = data.get('fullName')
+    employee_Type = data.get('typeEmployee')
+    self_Description = data.get('about')
+    validated = data.get('validated', 'false').lower() == 'true'
     
-    fullName=data.get('fullName'), 
-    employee_Type=data.get('typeEmployee'),
-    password_hash=employee.set_password(data.get('registerPassword')), 
-    self_Description=data.get('about'), 
-    photo_path=None,
-    validated=data.get('validated', 'false').lower() == 'true'
-
-    
-    photo = request.files['profilePhoto']
+    # Handle profile photo upload
+    photo = request.files.get('profilePhoto')
+    photo_path = None
     if photo and allowed_file(photo.filename):
         filename = secure_filename(photo.filename)
         photo.save(os.path.join(UPLOAD_FOLDER, filename))
         photo_path = f'/images/{filename}'
-        
+    
+    # Create Employee object first
     employee = Employee(
-        fullName=fullName, 
-        employee_Type=employee_Type, 
-        password_hash=password_hash, 
-        self_Description=self_Description, 
-        photo_path=photo_path, 
+        fullName=fullName,
+        employee_Type=employee_Type,
+        self_Description=self_Description,
+        photo_path=photo_path,
         validated=validated
     )
+    
+    # Set password after creating the object
+    password = data.get('registerPassword')
+    employee.set_password(password)
+    
+    # Save to database
     db.session.add(employee)
     db.session.commit()
+    
     return jsonify(employee.to_dict())

@@ -30,7 +30,7 @@ class Employee(db.Model):
         return {
             'id': self.id,
             'fullName': self.fullName,
-            'Employee_Type': self.Employee_Type,
+            'employee_Type': self.employee_Type,  # corrected key
             'self_Description': self.self_Description,
             'photo_path': self.photo_path,
             'status': self.status,

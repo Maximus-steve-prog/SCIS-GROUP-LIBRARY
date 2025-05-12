@@ -275,7 +275,7 @@ jQuery(function(){
           },
           about:{
             required:true,
-            minlength:250
+            minlength:20
           }
           ,
           confirmPassword: {
@@ -301,7 +301,7 @@ jQuery(function(){
           },
           about: {
             required: "Please provide a self description",
-            minlength: "Description should be at least 250 characters"
+            minlength: "Description should be at least 20 characters"
           },
           confirmPassword: {
             required: "Please confirm your password",
@@ -313,8 +313,8 @@ jQuery(function(){
           }
         },
         submitHandler: function(form) {
-          const formData = new FormData(this);
-          axios.post('/register', formData)
+          const formData = new FormData(form);
+          axios.post('/employees', formData)
             .then(function(response) {
               console.log(response.data);
             })

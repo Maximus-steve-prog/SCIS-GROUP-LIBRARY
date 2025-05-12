@@ -483,7 +483,7 @@
   </section>
 
   <div id="chatPopup" class="chat-with bg-no-repeat bg-center hidden fixed z-50 top-0 left-0 h-full p-1 dark:bg-gray-800 flex w-full max-w-10xl
-  bg-[url('{{ url_for('static', filename='images/Particulier-sm.png')}}')] md:bg-[url('{{ url_for('static', filename='images/Particulier-.png')}}')]">
+  bg-[url('{{url_for('static', filename='images/Particulier-sm.png')}}')] md:bg-[url('{{ url_for('static', filename='images/Particulier-.png')}}')]">
     <!-- Contact List Starts-->
     <div id="contact" class="contact bg-white dark:bg-gray-900 opacity-90 relative max-w-md min-w-contact w-full transition-all duration-200 shadow-sm  overflow-hidden  h-full list-container  dark:bg-gray-800 flex flex-col gap-2 px-5 py-2">
             <div class="title-app flex px-2 py-3 items-center justify-between">
@@ -642,7 +642,7 @@
               <div class="sm:col-span-3">
                 <label for="loginPassword" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
                 <div class="mt-2">
-                  <input type="text" name="loginPassword" id="loginPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                  <input type="password" name="loginPassword" id="loginPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
               </div>
 
@@ -697,13 +697,13 @@
               <div class="sm:col-span-3">
                 <label for="registerPassword" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
                 <div class="mt-2">
-                  <input type="text" name="registerPassword" id="registerPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                  <input type="password" name="registerPassword" id="registerPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
               </div>
               <div class="sm:col-span-3">
                 <label for="confirmPassword" class="dark:text-gray-300 block text-sm/6 font-medium text-gray-900">Confirm Password *</label>
                 <div class="mt-2">
-                  <input type="text" name="confirmPassword" id="confirmPassword"  placeholder="Confirm your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                  <input type="password" name="confirmPassword" id="confirmPassword"  placeholder="Confirm your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
               </div>
 
@@ -785,6 +785,7 @@
   <script src="{{url_for('static', filename='lib/i18next.min.js')}}"></script>
   <script src="{{url_for('static', filename='lib/swiper-bundle.min.js')}}"></script>
   <script src="{{url_for('static', filename='lib/jquery.validate.min.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/axios.min.js')}}"></script>
   <script src="{{url_for('static', filename='lib/jquery-ui.js')}}" ></script>
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
   <script src="{{url_for('static', filename='js/chatRoom.js')}}"></script>
