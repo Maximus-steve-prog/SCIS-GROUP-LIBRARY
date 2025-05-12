@@ -7,7 +7,7 @@ from datetime import datetime
 from db.db import db
 from models.models import Employee
 
-employee_routes = Blueprint('employee_routes', __name__)
+employee_routes = Blueprint('employee_routes', __name__, url_prefix='/employees')
 
 UPLOAD_FOLDER = os.path.join('static', 'images')
 if not os.path.exists(UPLOAD_FOLDER):
@@ -18,7 +18,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
            
-@employee_routes.route('/employees', methods=['GET'])
+@employee_routes.route('/list', methods=['GET'])
 @jwt_required()
 def get_employees():
     employees = Employee.query.all()
@@ -27,7 +27,7 @@ def get_employees():
     return jsonify([employee.to_dict() for employee in employees])
            
            
-@employee_routes.route('/register', methods=['POST', 'GET'])
+@employee_routes.route('/', methods=['POST', 'GET'])
 def register():
     if request.method == 'GET':
         return render_template('index.html')

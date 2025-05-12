@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="url_for('static', filename='lib/tailwindcss.js')"></script>
+    <script src="{{url_for('static', filename='lib/tailwindcss.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="url_for('static', filename='lib/jquery-ui.css')">
-    <link rel="stylesheet" href="url_for('static', filename='assets/style.css')">
-    <link rel="icon" href="url_for('static', filename='images/logo_scis_.png')" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='lib/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo_scis_.png')}}" type="image/x-icon">
     <script>
         tailwind.config = {
             darkMode: 'class'
@@ -22,7 +22,7 @@
   <div class="header dark:shadow-md z-50 fixed border-b-1 border-gray-200 w-full h-16 flex justify-between px-40 items-center bg-white dark:bg-gray-700 shadow-md">
     <a href="#animated-section">
       <div class="left logo flex p-2 gap-2 items-center cursor-pointer">
-          <img src="../images/logo_scis_.png" alt="Logo" class="h-9 w-8">
+          <img src="{{url_for('static', filename='images/logo_scis_.png')}}" alt="Logo" class="h-9 w-8">
           <h1 data-i18n="title" class="sm:text-2lg uppercase text-lg font-bold title-font  text-indigo-500 dark:text-indigo-400"></h1>
       </div>
     </a>
@@ -67,8 +67,8 @@
     </nav>
     <!-- Your language selection icons -->
     <div class="lang-switcher md:ml-2 hidden md:flex lang flex gap-5 items-center">        
-          <img src="../images/en.jpeg" class="rounded-full w-7 h-7 cursor-pointer" data-i18n-lang="en"  title="English">
-          <img src="../images/fr.jpeg" class="rounded-full w-7 h-7 cursor-pointer" data-i18n-lang="fr"  title="French">
+          <img src="{{url_for('static', filename='images/en.jpeg')}}" class="rounded-full w-7 h-7 cursor-pointer" data-i18n-lang="en"  title="English">
+          <img src="{{url_for('static', filename='images/fr.jpeg')}}" class="rounded-full w-7 h-7 cursor-pointer" data-i18n-lang="fr"  title="French">
     </div>
     <div class="right flex gap-4 p-2">
       <button type="button" class="btn-dark   hs-dark-mode font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" data-hs-theme-click-value="dark">
@@ -104,7 +104,7 @@
     </div>
   </div>
 
-  <section id="animated-section" class="text-gray-600 min-h-screen pt-10 dark:text-white flex body-font md:bg-[url('../images/Particulier-.png')]  bg-[url('../images/Particulier-sm.png')] bg-no-repeat md:bg-top bg-left-top opacity-0" >
+  <section id="animated-section" class="text-gray-600 min-h-screen pt-10 dark:text-white flex body-font md:bg-[url('{{url_for('static', filename='images/Particulier.png')}}')]  bg-[url('{{url_for('static', filename='images/Particulier-sm.png')}}')] bg-no-repeat md:bg-top bg-left-top opacity-0" >
         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center  md:dark:bg-transparent">
           <!-- Left Content -->
           <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -126,7 +126,7 @@
           </div>
           <!-- Right Image -->
           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 opacity-0" id="imageContainer">
-            <img class="object-cover object-center rounded md:opacity-50 " alt="hero" src="../images/Particulier-.png" id="heroImage" />
+            <img class="object-cover object-center rounded md:opacity-50 " alt="hero" src="{{url_for('static', filename='images/Particulier-.png') }}" id="heroImage" />
           </div>
         </div>
   </section>
@@ -299,7 +299,7 @@
             <!-- Member 1 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full ">
               <div class="bg-white h-full dark:bg-gray-700 flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/20220609_171629_transcpr.jpg" />
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/20220609_171629_transcpr.jpg') }}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 title-font font-medium mb-1 dark:text-white">Holden Caulfield</h2>
                   <p class="text-gray-500 mb-2 dark:text-gray-200">UI Designer</p>
@@ -316,7 +316,7 @@
             <!-- Member 2 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div class="bg-white h-full dark:bg-gray-700 flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/20230705_133124.jpg" />
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/20230705_133124.jpg') }}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 title-font font-medium mb-1 dark:text-white">Henry Letham</h2>
                   <p class="text-gray-500 mb-2 dark:text-gray-200">CTO</p>
@@ -333,7 +333,7 @@
             <!-- Member 3 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div class="bg-white h-full dark:bg-gray-700 flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/464690235_1586243078951863_456041130619487436_n.jpg" />
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/464690235_1586243078951863_456041130619487436_n.jpg') }}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 title-font font-medium mb-1 dark:text-white">Oskar Blinde</h2>
                   <p class="text-gray-500 mb-2 dark:text-gray-200">Founder</p>
@@ -350,7 +350,7 @@
             <!-- Member 4 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div class="bg-white h-full dark:bg-gray-700 flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/AMyImage2.jpg" />
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/AMyImage2.jpg') }}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 title-font font-medium mb-1 dark:text-white">John Doe</h2>
                   <p class="text-gray-500 mb-2 dark:text-gray-200">DevOps</p>
@@ -367,7 +367,7 @@
             <!-- Member 5 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div class="bg-white h-full dark:bg-gray-700 flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/Capture d'écran 2024-12-24 125401.png" />
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/bg.jpeg')}}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 dark:text-white title-font font-medium mb-1">Jane Smith</h2>
                   <p class="text-gray-500 mb-2 dark:text-gray-200">Product Manager</p>
@@ -384,7 +384,7 @@
             <!-- Member 6 -->
             <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div class="bg-white dark:bg-gray-700 h-full flex flex-col items-center border border-gray-200 p-4 rounded-lg cursor-pointer transition-shadow duration-200 hover:shadow-lg">
-                <img alt="team" class="w-16 h-16 border border-gray-200 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="../images/Capture d'écran 2024-12-27 105308.png" />
+                <img alt="team" class="w-16 h-16 border border-gray-200 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-4" src="{{url_for('static', filename='images/bg.jpeg') }}" />
                 <div class="flex-grow text-center">
                   <h2 class="text-gray-900 dark:text-white title-font font-medium mb-1">Alex Johnson</h2>
                   <p class="text-gray-500 dark:text-gray-200 mb-2">Frontend Developer</p>
@@ -448,7 +448,7 @@
                 </div>
 
                 <div class="col-span-full">
-                  <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900 dark:text-white">Book space uploader</label>
+                  <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-white">Book space uploader</label>
                   <div class="mt-2 flex justify-center rounded-lg border border-dashed dark:border-gray-600 border-gray-900/25 px-6 py-10">
                     <div class="text-center">
                       <svg class="mx-auto size-14 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -482,8 +482,8 @@
       </form>
   </section>
 
-  <div id="chatPopup" class="chat-with bg-no-repeat bg-center  bg-[url('images/Particulier-sm.png')] md:bg-[url('images/Particulier-.png')] md:dark:bg-[url('images/Particulier-.png')] hidden  fixed z-50 top-0 left-0 h-full p-1 dark:bg-gray-800  flex w-full max-w-10xl ">  
-
+  <div id="chatPopup" class="chat-with bg-no-repeat bg-center hidden fixed z-50 top-0 left-0 h-full p-1 dark:bg-gray-800 flex w-full max-w-10xl
+  bg-[url('{{ url_for('static', filename='images/Particulier-sm.png')}}')] md:bg-[url('{{ url_for('static', filename='images/Particulier-.png')}}')]">
     <!-- Contact List Starts-->
     <div id="contact" class="contact bg-white dark:bg-gray-900 opacity-90 relative max-w-md min-w-contact w-full transition-all duration-200 shadow-sm  overflow-hidden  h-full list-container  dark:bg-gray-800 flex flex-col gap-2 px-5 py-2">
             <div class="title-app flex px-2 py-3 items-center justify-between">
@@ -514,7 +514,7 @@
             <div class="bg-white dark:bg-gray-800 p-2 flex justify-between items-center">
                 <div class=" p-1 flex items-center gap-2">
                     <i class="cursor-pointer fa-solid fa-arrow-left text-gray-600 dark:text-gray-300" id="back"></i>
-                    <img src="../images/bg.jpeg" class="w-10 h-10 object-cover rounded-full border-0 dark:border-gray-600 show-incoming-info"  alt="">
+                    <img src="{{url_for('static', filename='images/bg.jpeg') }}" class="w-10 h-10 object-cover rounded-full border-0 dark:border-gray-600 show-incoming-info"  alt="">
                     <div class="flex flex-col">
                         <span class="text-gray-600 text-sm dark:text-gray-300">John Doe</span>
                         <span class="text-gray-600 text-sm dark:text-gray-300">Online</span>
@@ -548,13 +548,13 @@
                             </div>
                             <div class="selected-emoji absolute  top-14 w-6 h-6 flex  overflow-y-hidden right-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full"></div>
                         </div>
-                        <img src="../images/book-3088775_1280.jpg" alt="Contact" class="border translate-y-3 w-10 h-10 rounded-full ml-2 dark:border-gray-600">
+                        <img src="{{url_for('static', filename='images/book-3088775_1280.jpg') }}" alt="Contact" class="border translate-y-3 w-10 h-10 rounded-full ml-2 dark:border-gray-600">
                     </div>
                 </div>
             
                 <!-- Incoming Message -->
                 <div class="flex relative justify-start items-center mb-4 message-wrapper">
-                    <img src="../images/Capture d'écran 2025-04-06 221800.png" alt="Contact" class="border -translate-y-4 w-10 h-10 rounded-full mr-2 dark:border-gray-600">
+                    <img src="{{url_for('static', filename='images/bg.jpeg') }}" alt="Contact" class="border -translate-y-4 w-10 h-10 rounded-full mr-2 dark:border-gray-600">
                     <div class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300 p-3 rounded-lg max-w-xs shadow-md relative">
                         <p>This is an incoming message.</p>
                         <div class="flex justify-between items-center mt-1">
@@ -597,7 +597,7 @@
      <!-- video call zone starts -->
      <div  class="voice-call-interface absolute  inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center hidden z-50">
             <div class="voice-resize draggable bg-white dark:bg-gray-800 rounded-lg shadow-md md:h-3/5  md:w-3/6 flex flex-col justify-center items-center">
-                <img src="../images/bg.jpeg" alt=""  class="w-32 h-32 rounded-full mb-4 receptor">
+                <img src="{{url_for('static', filename='images/bg.jpeg') }}" alt=""  class="w-32 h-32 rounded-full mb-4 receptor">
                 <h1 class="text-lg font-semibold text-center mt-4 text-white">John Doe & Jane Smith</h1>
                 <p class="text-gray-500 text-center">In Call...</p>
                 <div class="text-center mt-2">
@@ -629,18 +629,18 @@
   <!-- Login Popup -->
   <div id="loginPopup" class="w-full fixed inset-0 flex items-center justify-center hidden z-50 transition-transform duration-300 bg-white dark:bg-gray-800" aria-hidden="true">
     <div class="bg-white border dark:bg-gray-700 rounded-lg shadow-lg p-6 w-full md:max-w-sm transform scale-0 opacity-0 transition-all duration-300" role="dialog" aria-modal="true">
-             <img src="url_for('static', filename='images/logo_scis_.png')" alt="" class="mx-auto mb-4 w-10 h-10 dark:bg-gray-800">
+             <img src="{{url_for('static', filename='images/logo_scis_.png')}}" alt="" class="mx-auto mb-4 w-10 h-10 dark:bg-gray-800">
             <h2 class="text-xl font-semibold mb-4 text-center text-blue-500 dark:text-blue-500">Login</h2>
             <form id="loginForm" class="w-full flex flex-col gap-4" novalidate>
 
               <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Username *</label>
+                <label for="userName" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Username *</label>
                 <div class="mt-2">
                   <input type="email" placeholder="Enter your username" id="userName" name="userName" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" required />
                 </div>
               </div>
               <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
+                <label for="loginPassword" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
                 <div class="mt-2">
                   <input type="text" name="loginPassword" id="loginPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
@@ -666,13 +666,13 @@
   </div>
         
   <!-- Register Popup -->
-  <div id="registerPopup" class="fixed inset-0 flex items-center justify-center  hidden- z-50 transition-transform duration-300 bg-white dark:bg-gray-800" aria-hidden="false">
-    <div class=" rounded-lg border  p-6 w-full md:max-w-md transform scale-0- shadow-lg opacity-0- transition-all duration-300">
-            <img src="../images/logo_scis_.png" alt="" class="mx-auto mb-4 w-10 h-10 dark:bg-gray-800">
+  <div id="registerPopup" class="fixed inset-0 flex items-center justify-center  hidden z-50 transition-transform duration-300 bg-white dark:bg-gray-800" aria-hidden="false">
+    <div class=" rounded-lg border  p-6 w-full md:max-w-md transform scale-0 shadow-lg opacity-0 transition-all duration-300">
+            <img src="{{url_for('static', filename='images/logo_scis_.png')}}" alt="" class="mx-auto mb-4 w-10 h-10 dark:bg-gray-800">
             <h2 class="text-xl text-center font-semibold mb-4 text-indigo-500 dark:text-indigo-500">Register Employee</h2>
             <form id="registerForm" class="w-full relative min-h-[400px] max-h-[600px] md:max-h-[800px] overflow-y-auto flex flex-col gap-2" novalidate>
               <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Full name *</label>
+                <label for="fullName" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Full name *</label>
                 <div class="mt-2">
                   <input type="text" name="fullName" id="fullName" placeholder="Enter your full name" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
@@ -695,13 +695,13 @@
               </div>
             
               <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
+                <label for="registerPassword" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-300">Password *</label>
                 <div class="mt-2">
                   <input type="text" name="registerPassword" id="registerPassword"  placeholder="Enter your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
               </div>
               <div class="sm:col-span-3">
-                <label for="first-name" class="dark:text-gray-300 block text-sm/6 font-medium text-gray-900">Confirm Password *</label>
+                <label for="confirmPassword" class="dark:text-gray-300 block text-sm/6 font-medium text-gray-900">Confirm Password *</label>
                 <div class="mt-2">
                   <input type="text" name="confirmPassword" id="confirmPassword"  placeholder="Confirm your password" autocomplete="given-name" class="dark:text-white dark:bg-gray-800 block border w-full rounded-md bg-white px-3 py-2 md:py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
@@ -718,7 +718,7 @@
             
               <div class="col-span-full preview text-end w-full flex items-center justify-end gap-2 ">
                   
-                  <img src="../images/AMyImage2.jpg" alt="" id="profilePhotoPreview" class=" w-20 h-20 border hidden border-dashed dark:border-gray-400 border-gray-900/25  object-cover rounded-full">
+                  <img src="{{url_for('static', filename='images/AMyImage2.jpg') }}" alt="" id="profilePhotoPreview" class=" w-20 h-20 border hidden border-dashed dark:border-gray-400 border-gray-900/25  object-cover rounded-full">
                   
                   <div class="uploader-zone mt-2 flex justify-center text-end  w-full  rounded-lg border border-dashed dark:border-gray-400 border-gray-900/25 p-1">
                     <div class="text-center">
@@ -726,7 +726,7 @@
                         <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd" />
                       </svg>
                       <div class="mt-1 flex text-sm/6 text-gray-600">
-                        <label for="file-upload" class="relative cursor-pointer rounded-md bg-white dark:bg-gray-700 font-medium font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-indigo-500">
+                        <label for="profilePhoto" class="relative cursor-pointer rounded-md bg-white dark:bg-gray-700 font-medium font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-indigo-500">
                           <span class="">Upload a file</span>
                           <input type="file" id="profilePhoto" name="profilePhoto" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer dark:text-white dark:bg-gray-800 w-full" accept="image/*" required />
                         </label>
@@ -781,12 +781,12 @@
     </div>
   </footer>
     
-  <script src="url_for('static', filename='lib/jquery-3.7.1.js')"></script>
-  <script src="url_for('static', filename='lib/i18next.min.js')"></script>
-  <script src="url_for('static', filename='lib/swiper-bundle.min.js')"></script>
-  <script src="url_for('static', filename='lib/jquery.validate.min.js')"></script>
-  <script src="url_for('static', filename='lib/jquery-ui.js')" ></script>
-  <script src="url_for('static', filename='js/main.js')"></script>
-  <script src="url_for('static', filename='js/chatRoom.js')"></script>
+  <script src="{{url_for('static', filename='lib/jquery-3.7.1.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/i18next.min.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/swiper-bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/jquery.validate.min.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/jquery-ui.js')}}" ></script>
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
+  <script src="{{url_for('static', filename='js/chatRoom.js')}}"></script>
 </body>
 </html>

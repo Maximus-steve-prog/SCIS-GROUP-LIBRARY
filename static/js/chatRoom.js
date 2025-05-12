@@ -7,19 +7,19 @@ jQuery(function() {
 
 
     // Fetch contacts from JSON
-    jQuery.getJSON("../static/assets/contacts.json", function(data) {
-        // Get the current date and time
-        const now = new Date();
+    // jQuery.getJSON("../static/assets/contacts.json", function(data) {
+    //     // Get the current date and time
+    //     const now = new Date();
  
-        // Sort contacts by time (most recent first)
-        data.sort(function(a, b) {
-            const aTimeDiff = Math.abs(now - new Date(a.time));
-            const bTimeDiff = Math.abs(now - new Date(b.time));
-            return aTimeDiff - bTimeDiff; // Ascending order of time difference to now
-        });
+    //     // Sort contacts by time (most recent first)
+    //     data.sort(function(a, b) {
+    //         const aTimeDiff = Math.abs(now - new Date(a.time));
+    //         const bTimeDiff = Math.abs(now - new Date(b.time));
+    //         return aTimeDiff - bTimeDiff; // Ascending order of time difference to now
+    //     });
     
-        displayContacts(data);
-    });
+    //     displayContacts(data);
+    // });
 
   // Function to display contacts
     function displayContacts(contacts) {
@@ -431,10 +431,10 @@ jQuery(function() {
         setTheme(); // Update the button visibility
     });
 
-    jQuery.getJSON("/assets/contacts.json", function(data) {
-        contacts = data; // Store the fetched contacts
-        loadContacts(); // Load contacts into the modal when data is retrieved
-    });
+    // jQuery.getJSON("/assets/contacts.json", function(data) {
+    //     contacts = data; // Store the fetched contacts
+    //     loadContacts(); // Load contacts into the modal when data is retrieved
+    // });
 
     // Function to show modal
     jQuery('.btn-forward').click(function () {
