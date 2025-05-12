@@ -273,6 +273,11 @@ jQuery(function(){
             required: true,
             minlength: 6
           },
+          about:{
+            required:true,
+            minlength:250
+          }
+          ,
           confirmPassword: {
             required: true,
             equalTo: '#registerPassword'
@@ -293,6 +298,10 @@ jQuery(function(){
           registerPassword: {
             required: "Please provide a password",
             minlength: "Password should be at least 6 characters"
+          },
+          about: {
+            required: "Please provide a self description",
+            minlength: "Description should be at least 250 characters"
           },
           confirmPassword: {
             required: "Please confirm your password",
@@ -336,6 +345,7 @@ jQuery(function(){
 
 
       jQuery('.preview #profilePhoto').on('change', function() {
+        jQuery('.uploader-zone').removeClass('w-full').addClass('w-3/4');
         const file = this.files[0];
         if (file) {
           const reader = new FileReader();
