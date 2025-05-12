@@ -181,18 +181,22 @@ jQuery(function(){
       // Open login popup
       jQuery('.loginBtn').click(function() {
         showPopup(jQuery('#loginPopup'));
+        jQuery('.openChat').addClass('hidden');
       })
       // Open register popup
       jQuery('.registerBtn').click(function() {
         showPopup(jQuery('#registerPopup'));
+        jQuery('.openChat').addClass('hidden');
       });
     
       // Close buttons
       jQuery('#closeLogin').click(function() {
         hidePopup(jQuery('#loginPopup'));
+        jQuery('.openChat').removeClass('hidden');
       });
       jQuery('#closeRegister').click(function() {
         hidePopup(jQuery('#registerPopup'));
+        jQuery('.openChat').removeClass('hidden');
       });
     
       // Clicking overlay closes popups

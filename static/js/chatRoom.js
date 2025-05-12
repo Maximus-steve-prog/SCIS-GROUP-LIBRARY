@@ -7,7 +7,7 @@ jQuery(function() {
 
 
     // Fetch contacts from JSON
-    jQuery.getJSON("assets/contacts.json", function(data) {
+    jQuery.getJSON("../assets/contacts.json", function(data) {
         // Get the current date and time
         const now = new Date();
  
@@ -44,7 +44,7 @@ jQuery(function() {
             const contactItem = `
             <div class="contact-item bg-white flex items-center py-2 hover:bg-gray-100 focus:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:bg-gray-900 transition-colors duration-200 px-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300">
                 <div class="relative">
-                    <img src="${contact.image}" alt="" data-name="${contact.name}" class="contact-image w-12 h-12 object-cover border-gray-500 border dark:border-gray-600 rounded-full mr-3">
+                    <img src="../${contact.image}" alt="" data-name="${contact.name}" class="contact-image w-12 h-12 object-cover border-gray-500 border dark:border-gray-600 rounded-full mr-3">
                     ${onlineDot}
                 </div>
                 <div class="show-message flex items-center justify-between flex-grow">
