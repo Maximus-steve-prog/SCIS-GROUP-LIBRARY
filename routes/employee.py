@@ -38,6 +38,10 @@ def register():
     self_Description = data.get('about')
     validated = data.get('validated', 'false').lower() == 'true'
     
+    existing_employee = Employee.query.filter_by(fullName=fullName).first()
+    if existing_employee:
+        return jsonify({'message': 'Employee already exists'}), 400
+    
     # Handle profile photo upload
     photo = request.files.get('profilePhoto')
     photo_path = None
