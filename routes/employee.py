@@ -26,9 +26,11 @@ def get_employees():
         return jsonify([])
     return jsonify([employee.to_dict() for employee in employees])
            
-           
+# EndPoint to register a new employee           
 @employee_routes.route('/', methods=['POST', 'GET'])
 def register():
+    if request.method == 'POST':
+        return register()
     if request.method == 'GET':
         return render_template('index.html')
     
@@ -68,3 +70,29 @@ def register():
     db.session.commit()
     
     return jsonify(employee.to_dict())
+
+
+# EndPoint to login an employee
+@employee_routes.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    
+    fullName = data.get('fullName')
+    password = data.get('password')
+    
+    employee = Employee.filter_by(fullName=fullName).first()
+    if not employee or not employee.check_password(password):
+        return jsonify({'message': 'Invalid credentials'}), 401
+    
+    #Update employee while connecting
+    employee.status = 'online'
+    employee.last_LoginAt = datetime.utcnow()
+    db.session.commit()
+    
+    #Create a Jwt Token
+    access_token = create_access_token(identity=employee.id)
+    
+    from app import socketIO
+    socketIO.emit('status_update', {'id': employee.id, 'status': 'online'}, namespace='/employees', broadcast=True)
+    
+    return jsonify({'access_token': access_token}), 200

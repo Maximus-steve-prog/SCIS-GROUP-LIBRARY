@@ -13,10 +13,10 @@ jQuery(function(){
       return param.split('|').indexOf(extension) !== -1;
     }, "Please select a file with a valid extension.");
 
-        jQuery('.nav-item').on('mouseover', function(){
-            jQuery(this).find('.sub-item').stop(true, true).slideDown(500);
-        });
-        function applyTheme(isDark) {
+    jQuery('.nav-item').on('mouseover', function(){
+        jQuery(this).find('.sub-item').stop(true, true).slideDown(500);
+    });
+    function applyTheme(isDark) {
             if (isDark) {
               jQuery('body').addClass('dark');
               jQuery('#themeIcon').removeClass('fa-sun').addClass('fa-moon');
@@ -24,26 +24,26 @@ jQuery(function(){
               jQuery('body').removeClass('dark');
               jQuery('#themeIcon').removeClass('fa-moon').addClass('fa-sun');
             }
-          }
+    }
         
-          // Load saved preference
-          const darkModePref = localStorage.getItem('darkMode');
-          if (darkModePref !== null) {
-            applyTheme(darkModePref === 'true');
-          } else {
-            // Default to light mode
-            applyTheme(false);
-          }
+    // Load saved preference
+    const darkModePref = localStorage.getItem('darkMode');
+    if (darkModePref !== null) {
+      applyTheme(darkModePref === 'true');
+    } else {
+      // Default to light mode
+      applyTheme(false);
+    }
         
-          jQuery('.darkModeToggle').click(function() {
-            const isDark = jQuery('body').hasClass('dark');
-            // Toggle theme
-            applyTheme(!isDark);
-            // Save preference
-            localStorage.setItem('darkMode', !jQuery('body').hasClass('dark'));
-          });
+    jQuery('.darkModeToggle').click(function() {
+      const isDark = jQuery('body').hasClass('dark');
+      // Toggle theme
+      applyTheme(!isDark);
+      // Save preference
+      localStorage.setItem('darkMode', !jQuery('body').hasClass('dark'));
+    });
 
-        const swiper = new Swiper('.mySwiper', {
+    const swiper = new Swiper('.mySwiper', {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
@@ -59,24 +59,25 @@ jQuery(function(){
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             },
-        });
+    });
 
-        jQuery('.toggle_menu').on('click', function(){
-            jQuery('nav').toggleClass('active');
-        })
+    jQuery('.toggle_menu').on('click', function(){
+        jQuery('nav').toggleClass('active');
+    })
 
-        jQuery(document).on('mouseover', function(e){
+    jQuery(document).on('mouseover', function(e){
             if(!jQuery(e.target).closest('.nav-item, .sub-item, .item, nav').length){
                 jQuery('.sub-item').stop(true, true).slideUp(300);
             }
-        })
-        jQuery(document).on('click', function(e){
+    })
+
+    jQuery(document).on('click', function(e){
             if(!jQuery(e.target).closest('nav, .toggle_menu').length){
                 jQuery('nav').removeClass('active');
             }
-        })
+    })
 
-       jQuery(window).resize(function() {
+    jQuery(window).resize(function() {
          if (jQuery(window).width() < 768) {
             jQuery('.nav-item').on('mouseover', function(){
                 jQuery(this).find('.sub-item').css('display', 'none');
@@ -85,19 +86,19 @@ jQuery(function(){
         
          
          }
-       });
+    });
 
-       jQuery('section .border').hover(
+    jQuery('section .border').hover(
         function() {
           jQuery(this).addClass('shadow-lg');
         },
         function() {
           jQuery(this).removeClass('shadow-lg');
         }
-      );
+    );
     
       // Search filter
-      jQuery('#searchInput').keyup(function() {
+    jQuery('#searchInput').keyup(function() {
         const query = jQuery(this).val().toLowerCase();
         jQuery('section .container .list .border').each(function() {
           const name = jQuery(this).find('h2').text().toLowerCase();
@@ -107,11 +108,10 @@ jQuery(function(){
             jQuery(this).parent().hide();
           }
         });
-      });
-
-      if(jQuery(window).on('scroll', function() {
-        jQuery('nav').removeClass('active');
-      }));
+    });
+    if(jQuery(window).on('scroll', function() {
+      jQuery('nav').removeClass('active');
+    }));
 
     var jQuerycircle = jQuery('#circleProgress');
 
@@ -144,7 +144,7 @@ jQuery(function(){
     });
 
 
-    function showPopup(jQuerypopup) {
+  function showPopup(jQuerypopup) {
         // Show overlay
         jQuery('#overlay').removeClass('hidden');
         // Show popup container
@@ -152,9 +152,9 @@ jQuery(function(){
         // Animate popup content
         const jQuerycontent = jQuerypopup.find('> div');
         jQuerycontent.removeClass('scale-0 opacity-0').addClass('scale-100 opacity-100');
-      }
+  }
     
-      function hidePopup(jQuerypopup) {
+  function hidePopup(jQuerypopup) {
         const jQuerycontent = jQuerypopup.find('> div');
         // Animate out
         jQuerycontent.removeClass('scale-100 opacity-100').addClass('scale-0 opacity-0');
@@ -163,51 +163,51 @@ jQuery(function(){
           jQuerypopup.addClass('hidden').attr('aria-hidden', 'true');
           jQuery('#overlay').addClass('hidden');
         }, 300); 
-      }
+  }
       
       
-      jQuery('.openChat').click(function() {
+  jQuery('.openChat').click(function() {
         showPopup(jQuery('#chatPopup'));
         jQuery(this).addClass('hidden');
         jQuery('#circleProgress').removeClass('z-50').addClass('z-0');
-      });
+  });
 
-      jQuery('#closeChat').click(function() {
+  jQuery('#closeChat').click(function() {
         hidePopup(jQuery('#chatPopup'));
         jQuery('.openChat').removeClass('hidden');
         jQuery('#circleProgress').removeClass('z-0').addClass('z-50');
-      })
-    
-      // Open login popup
-      jQuery('.loginBtn').click(function() {
+  })
+
+  // Open login popup
+  jQuery('.loginBtn').click(function() {
         showPopup(jQuery('#loginPopup'));
         jQuery('.openChat').addClass('hidden');
-      })
-      // Open register popup
-      jQuery('.registerBtn').click(function() {
+  })
+  // Open register popup
+  jQuery('.registerBtn').click(function() {
         showPopup(jQuery('#registerPopup'));
         jQuery('.openChat').addClass('hidden');
-      });
-    
-      // Close buttons
-      jQuery('#closeLogin').click(function() {
+  });
+
+  // Close buttons
+  jQuery('#closeLogin').click(function() {
         hidePopup(jQuery('#loginPopup'));
         jQuery('.openChat').removeClass('hidden');
-      });
-      jQuery('#closeRegister').click(function() {
+  });
+  jQuery('#closeRegister').click(function() {
         hidePopup(jQuery('#registerPopup'));
         jQuery('.openChat').removeClass('hidden');
-      });
-    
-      // Clicking overlay closes popups
-      jQuery('#overlay').on( 'click', function() {
+  });
+
+  // Clicking overlay closes popups
+  jQuery('#overlay').on( 'click', function() {
         alert('Overlay clicked!');
         hidePopup(jQuery('#loginPopup'));
         hidePopup(jQuery('#registerPopup'));
-      });
+  });
     
       // Optional: handle form submissions
-      jQuery('#loginForm').validate({
+  jQuery('#loginForm').validate({
         rules: {
            userName: {
             required: true,
@@ -230,37 +230,49 @@ jQuery(function(){
         },
         submitHandler: function(form) {
          
-          const Annette = {
-            email: jQuery('#usrName').val(),
-            password: jQuery('#loginPassword').val()
-          }
+          const fullName= form.userName.value,
+            password= form.loginPassword.value;
 
-          console.log(JSON.stringify(Annette));
+          console.log('Form submitted:', fullName, password);
 
-          axios.post('/employees/login', Annette)
-          .then(res => {
-            // Stocker le token dans le localStorage
-            const token = res.data.access_token;
-            localStorage.setItem('token', token);
-            // Mettre à jour l'en-tête Authorization
-            axios.defaults.headers['Authorization'] = `Bearer ${token}`;
-            
-            $('#message').html('<p class="text-green-600">Login successful!</p>');
+          axios.post('/employees/login', {
+            fullName: fullName,
+            password: password
           })
-          .catch(error => {
-            if (error.response && error.response.data && error.response.data.msg) {
-              $('#message').html(`<p class="text-red-600">${error.response.data.msg}</p>`);
-            } else {
-              $('#message').html('<p class="text-red-600">Login failed. Please try again.</p>');
-            }
+          .then(function(response) {
+            localStorage.setItem('token', response.data.access_token);
+            // alert('Logged in!');
+            // initializeSocket();
+            console.log(response);
+          })
+          .catch(function(error) {
+            alert('Login failed');
           });
-
-          hidePopup(jQuery('#loginPopup'));
-          form.reset();
         }
-      });
+  });
 
-      jQuery('#registerForm').validate({
+  function initializeSocket() {
+        const token = localStorage.getItem('token');
+        const socket = io();
+
+        socket.on('connect', function() {
+          console.log('Connected to Socket.IO');
+
+          // Optionally, join rooms or send messages
+        });
+
+        // Listen for status updates
+        socket.on('status_update', function(data) {
+          console.log('Status update:', data);
+        });
+
+        // Listen for messages
+        socket.on('message', function(data) {
+          console.log('Received message:', data);
+        });
+  }
+
+  jQuery('#registerForm').validate({
         rules: {
           fullName: {
             required: true,
@@ -324,32 +336,29 @@ jQuery(function(){
               console.log(error.response.data);
             });
         }
-      });
+  });
 
 
-      const section = jQuery('#animated-section');
-
-      // Animate the entire section to fade in (initial)
-      section.removeClass('opacity-0');
-  
-      // Animate each content piece with delays
-      const title = jQuery('#title');
-      const paragraph = jQuery('#paragraph');
-      const btns1 = jQuery('#buttons1');
-      const btns2 = jQuery('#buttons2');
-      const imageContainer = jQuery('#imageContainer');
-  
-      // Trigger animations with delays
-      setTimeout(() => {
-        title.addClass('animate-fadeInUp', 'delay-1');
-        paragraph.addClass('animate-fadeInUp', 'delay-2');
-        btns1.addClass('animate-fadeInUp', 'delay-2');
-        btns2.addClass('animate-fadeInUp', 'delay-3');
-        imageContainer.addClass('animate-fadeInRight', 'delay-2');
-      }, 100);
+  const section = jQuery('#animated-section')
+  // Animate the entire section to fade in (initial)
+  section.removeClass('opacity-0');
+  // Animate each content piece with delays
+  const title = jQuery('#title');
+  const paragraph = jQuery('#paragraph');
+  const btns1 = jQuery('#buttons1');
+  const btns2 = jQuery('#buttons2');
+  const imageContainer = jQuery('#imageContainer');
+  // Trigger animations with delays
+  setTimeout(() => {
+    title.addClass('animate-fadeInUp', 'delay-1');
+    paragraph.addClass('animate-fadeInUp', 'delay-2');
+    btns1.addClass('animate-fadeInUp', 'delay-2');
+    btns2.addClass('animate-fadeInUp', 'delay-3');
+    imageContainer.addClass('animate-fadeInRight', 'delay-2');
+  }, 100);
 
 
-      jQuery('.preview #profilePhoto').on('change', function() {
+  jQuery('.preview #profilePhoto').on('change', function() {
         jQuery('.uploader-zone').removeClass('w-full').addClass('w-3/4');
         const file = this.files[0];
         if (file) {
@@ -359,9 +368,9 @@ jQuery(function(){
           };
           reader.readAsDataURL(file);
         }
-      });
+  })
 
-      i18next.init({
+  i18next.init({
         lng: 'en', // default language
         resources: {
           en: {
@@ -393,7 +402,7 @@ jQuery(function(){
         }
       }, function(err, t) {
         updateContent();
-      });
+  });
 
   function updateContent() {
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
@@ -408,8 +417,7 @@ jQuery(function(){
         if (err) return console.error('Error switching language:', err);
         updateContent();
       });
-    });
-
-
+    
+  });
 
 })
