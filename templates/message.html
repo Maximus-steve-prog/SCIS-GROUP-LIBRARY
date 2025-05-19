@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.min.js"></script>
+<!-- Tailwind CSS & scripts -->
+<script src="../static/lib/tailwindcss.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    html{
+        font-size: .9rem;
+    }
+    .content{
+        font-size: 80%;
+    }
+</style>
+<title>Reusable Message</title>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+
+<!-- Button to trigger message -->
+<button id="showBtn" class="mb-4 px-4 py-2 bg-blue-500 text-white rounded">Show Message</button>
+
+<!-- Message template -->
+<div id="message" class="message-displayer items-center flex gap-2 rounded py-2  px-3 min-w-[300px] fixed left-1/2 -translate-x-1/2 shadow-md border bg-white" style="top: -10%; transition: top 1s ease; display: none; z-index:999;">
+    <img id="messageIcon" src="" class="w-7 h-7" alt="">
+    <div id="messageContent" class="content w-full h-full flex  mr-3  text-gray-500 justify-center items-center">
+        <!-- Placeholder for message -->
+    </div>
+    <i id="closeMsg" class="fa fa-times absolute shadow-md p-0.5 w-4 h-4 text-sm text-gray-400 -top-1.5 border rounded-full bg-white flex items-center justify-center -right-1.5 cursor-pointer"></i>
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function(){
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.worker.min.js';
+      var pdfUrl = '/templates/Plateforme-de-Mise-en-Relation-des-Artisans-et-des-Petites-Entreprises-avec-les-Marches.pdf';
+      pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
+        var pdfDoc = pdfDoc_;
+        var pageNumber = 1;
+        pdfDoc.getPage(pageNumber).then(function(page) {
+          var scale = 1.5;
+          var viewport = page.getViewport({ scale: scale });
+          var canvas = document.getElementById('pdf-canvas');
+          var context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        });
+      });
+    });
+function showMessage(iconName, messageContent) {
+    // Set icon src
+    $('#messageIcon').attr('src', '../static/icons/' + iconName + '.png');
+
+    // Set message content
+    $('#messageContent').text(messageContent);
+
+    // Animate into view
+    $('#message').stop(true, true)
+                 .hide().css('top', '-10%').show()
+                 .animate({ top: '5%' }, 300);
+
+    setTimeout(function() {
+        $('#message').animate({ top: '-10%' }, 300);
+    }, 5000);
+}
+
+
+$(document).ready(function() {
+    // Trigger example
+    $('#showBtn').click(function() {
+        showMessage('error', 'Welcome on SCIS-GROUP online Library');
+    });
+
+    // Close button
+    $('#closeMsg').click(function() {
+        $('#message').fadeOut(300);
+    });
+});
+</script>
+
+</body>
+</html>

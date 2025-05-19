@@ -22,62 +22,7 @@ jQuery(function() {
     // });
 
   // Function to display contacts
-    function displayContacts(contacts) {
-        jQuery('#contact-list').empty(); // Clear the existing list
-
-        jQuery.each(contacts, function(index, contact) {
-            const onlineDot = contact.status === "online"
-                ? '<div class="absolute bottom-0 right-4 w-3 h-3 rounded-full bg-green-400 p-1"></div>'
-                : '<div class="absolute bottom-0 right-4 w-3 h-3 rounded-full bg-gray-300"></div>';
-
-            // Handle unread messages
-            let unreadElement;
-            if (contact.unread === 0) {
-                unreadElement = '<p style="display: none;"></p>'; // Use display: none for better UX
-            } else {
-                unreadElement = `<p class="text-blue-500 text-sm font-semibold bg-blue-200 rounded-full w-5 h-5 flex items-center justify-center">${contact.unread}</p>`;
-            }
-
-            // Extract only the time part (YYYY-MM-DDTHH:mm)
-            const timeOnly = contact.time.split('T')[1].slice(0, 5);
-
-            const contactItem = `
-            <div class="contact-item bg-white flex items-center py-2 hover:bg-gray-100 focus:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:bg-gray-900 transition-colors duration-200 px-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-300">
-                <div class="relative">
-                    <img src="../static/${contact.image}" alt="" data-name="${contact.name}" class="contact-image w-12 h-12 object-cover border-gray-500 border dark:border-gray-600 rounded-full mr-3">
-                    ${onlineDot}
-                </div>
-                <div class="show-message flex items-center justify-between flex-grow">
-                    <div class="contact-info">
-                        <h3 class="text-sm font-medium text-black dark:text-white">${contact.name}</h3>
-                        <p class="text-gray-500 text-sm dark:text-gray-400 truncate">${contact.message.substring(0, 40)}...</p>
-                    </div>
-                    <div class="text-right flex flex-col items-end">
-                        <p class="text-blue-400 dark:text-blue-300 text-sm">${timeOnly}</p>
-                        ${unreadElement}
-                    </div>
-                </div>
-            </div>`;
-            $('#contact-list').append(contactItem);
-        });
-
-        // Click handling for show-message
-        jQuery('.show-message').on('click', function() {
-            jQuery('#contact').toggleClass('hidden');
-            jQuery('.chat-room').toggleClass('hidden')
-        });
-
-        // Click handling for contact image
-        $('.contact-image').on('click', function() {
-            const contactName = $(this).data('name') || $(this).attr('alt');
-            const contactImage = $(this).attr('src');
-            console.log(contactName);
-            $('.user-profile-bg').find('.user-name').text(contactName);
-            $('.user-profile-bg').find('img').attr('src', contactImage);
-            $('.user-profile-bg').removeClass('hidden');
-        });
-    }
-
+    
     jQuery('#back').on('click', function() {
         jQuery('#contact').toggleClass('hidden');
         jQuery('.chat-room').toggleClass('hidden')

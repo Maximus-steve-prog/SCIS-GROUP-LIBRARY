@@ -69,9 +69,14 @@ body::-webkit-scrollbar-thumb{
     border-radius: 10px;
 }
 
+.content{
+    font-size: 80%;
+}
+
 .min-w-contact{
     min-width: 310px;
 }
+
 
 
 html{

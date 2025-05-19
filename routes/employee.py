@@ -1,10 +1,9 @@
-from flask import Blueprint, jsonify, request, send_from_directory, render_template
-from flask_jwt_extended import jwt_required,create_access_token, get_jwt_identity #type: ignore
+from flask import Blueprint, jsonify, request, current_app,send_from_directory, render_template
+from flask_jwt_extended import jwt_required,create_access_token, get_jwt_identity
 from werkzeug.utils import secure_filename
 import os
 from datetime import datetime
-
-from db.db import db
+from extensions.socketio import socketio, db
 from models.models import Employee
 
 employee_routes = Blueprint('employee_routes', __name__, url_prefix='/employees')
@@ -18,19 +17,21 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
            
-@employee_routes.route('/list', methods=['GET'])
+@employee_routes.route('/get_all_employees', methods=['GET'])
 @jwt_required()
 def get_employees():
-    employees = Employee.query.all()
+    print("Received request for get_all_employees")
+    current_employee_id = int(get_jwt_identity())
+    print(f"current_employee_id: {current_employee_id}")
+    employees = Employee.query.filter(Employee.id != current_employee_id).all()
+    print(f"Number of employees found: {len(employees)}")
     if employees is None:
-        return jsonify([])
+        return jsonify([]), 200
     return jsonify([employee.to_dict() for employee in employees])
            
 # EndPoint to register a new employee           
 @employee_routes.route('/', methods=['POST', 'GET'])
 def register():
-    if request.method == 'POST':
-        return register()
     if request.method == 'GET':
         return render_template('index.html')
     
@@ -73,26 +74,46 @@ def register():
 
 
 # EndPoint to login an employee
-@employee_routes.route('/login', methods=['POST'])
-def login():
-    data = request.json
-    
-    fullName = data.get('fullName')
-    password = data.get('password')
-    
-    employee = Employee.filter_by(fullName=fullName).first()
-    if not employee or not employee.check_password(password):
-        return jsonify({'message': 'Invalid credentials'}), 401
-    
-    #Update employee while connecting
-    employee.status = 'online'
-    employee.last_LoginAt = datetime.utcnow()
-    db.session.commit()
-    
-    #Create a Jwt Token
-    access_token = create_access_token(identity=employee.id)
-    
-    from app import socketIO
-    socketIO.emit('status_update', {'id': employee.id, 'status': 'online'}, namespace='/employees', broadcast=True)
-    
-    return jsonify({'access_token': access_token}), 200
+@socketio.on('login')
+def login(data):
+    with current_app.app_context():  # <-- this is important
+        try:
+            if not data:
+                socketio.emit('login_error', {'message': 'No data provided'})
+                return
+
+            fullName = data['fullName']
+            password = data['password']
+
+            if not fullName or not password:
+                socketio.emit('login_error', {'message': 'Full name and password are required', 'login' : fullName})
+                return
+
+            employee = Employee.query.filter_by(fullName=fullName).first()
+            if not employee or not employee.check_password(password):
+                socketio.emit('login_error', {'message': 'Invalid credentials', 'login' : fullName})
+                return
+
+            # Update employee status and login time
+            employee.status = 'online'
+            employee.last_LoginAt = datetime.utcnow()
+            db.session.commit()
+
+            # Create token
+            access_token = create_access_token(identity=str(employee.id))
+            socketio.emit('login_success', {
+                'token': access_token,
+                'me': employee.fullName,
+                'id': employee.id,
+                'status': employee.status
+            })
+            socketio.emit('connected_other_user', {
+                'employee': employee.fullName,
+                'status': employee.status
+            })
+
+        except (KeyError, TypeError) as e:
+            socketio.emit('login_error', {'message': f'Invalid request data: {str(e)}', 'login' : fullName})
+        except Exception as e:
+            db.session.rollback()
+            socketio.emit('login_error', {'message': f'An error occurred: {str(e)}'})
